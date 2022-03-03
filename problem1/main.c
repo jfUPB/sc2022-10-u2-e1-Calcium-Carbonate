@@ -61,19 +61,18 @@ void getArray(struct array *parr)
 void arrayCommon(struct array *arrIn1, struct array *arrIn2, struct array *arrOut)
 {
     int size;
-    arrOut->size = 0;
+    arrOut->size = 20;
 
-    if(arrIn1->size>arrIn2->size) size = arrIn1->size;
+    /*if(arrIn1->size>arrIn2->size) size = arrIn1->size;
         
     else if(arrIn2->size>arrIn1->size) size = arrIn2->size;
         
-    else if (arrIn2->size == arrIn1->size) size = arrIn2->size;
+    else if (arrIn2->size == arrIn1->size) size = arrIn2->size;*/
 
 
     int same[size];
     for (int i = 0; i < size; i++) same[i]=-1;
     
-
     int count=0;
 
     for(int i=0; i<arrIn1->size;i++){
