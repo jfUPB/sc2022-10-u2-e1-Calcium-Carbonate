@@ -50,7 +50,7 @@ void getArray(struct array *parr)
 
 
         for(int i = 0;i<parr->size;i++){
-            if(fgets(entrada2, 5, stdin) != NULL)
+            if(fgets(entry2, 5, stdin) != NULL)
             {
                 int change2 = sscanf(entry2,"%d",parr->pdata + i);
             }
