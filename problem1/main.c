@@ -33,14 +33,14 @@ void printArray(struct array *parr)
 void getArray(struct array *parr)
 {
 
-    char entry[14];
-    char entry2[14];
+    char entry[16];
+    char entry2[16];
 
     if(fgets(entry, 5, stdin) != NULL)
     {
         entry[strlen(entry) -1 ] = 0;
 
-        int cambio = sscanf(entry,"%d",&parr->size);
+        int change = sscanf(entry,"%d",&parr->size);
 
 
         parr->pdata = malloc(sizeof(int)*parr->size);
@@ -49,7 +49,7 @@ void getArray(struct array *parr)
         for(int i = 0;i<parr->size;i++){
             if(fgets(entry2, 5, stdin) != NULL)
             {
-                int cambio2 = sscanf(entry2,"%d",parr->pdata + i);
+                int change2 = sscanf(change2,"%d",parr->pdata + i);
             }
         }
     }
