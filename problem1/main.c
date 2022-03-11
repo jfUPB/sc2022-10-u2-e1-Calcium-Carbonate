@@ -36,12 +36,73 @@ void printArray(struct array *parr)
 
 void getArray(struct array *parr)
 {
-    
+    char entry[14];
+    char entry2[14];
+
+    if(fgets(entry, 5, stdin) != NULL)
+    {
+        entry[strlen(entry) -1 ] = 0;
+
+        int change = sscanf(entry,"%d",&parr->size);
+
+
+        parr->pdata = malloc(sizeof(int)*parr->size);
+
+
+        for(int i = 0;i<parr->size;i++){
+            if(fgets(entry2, 5, stdin) != NULL)
+            {
+                int change2 = sscanf(entry2,"%d",parr->pdata + i);
+            }
+        }
+    }
 }
 
 void arrayCommon(struct array *arrIn1, struct array *arrIn2, struct array *arrOut)
 {
+    int size;
+    arrOut->size = 0;
+
+    if(arrIn1->size>arrIn2->size) size = arrIn1->size;
+        
+    else if(arrIn2->size>arrIn1->size) size = arrIn2->size;
+        
+    else if (arrIn2->size == arrIn1->size) size = arrIn2->size;
+
+
+    int same[size];
+    for (int i = 0; i < size; i++) same[i]=-1;
     
+    int count=0;
+
+    for(int i=0; i<arrIn1->size;i++){
+        for(int j=0; j<arrIn2->size;j++){
+            if(arrIn1->pdata[i]==arrIn2->pdata[j]) 
+            {
+                int boolean = 0;
+                for (int k = 0; k < size; k++){
+                    if(arrIn1->pdata[i] == same[k])
+                    {
+                        k = size;
+                        boolean = 1;
+                    }
+                }
+                if (boolean == 0)
+                {
+                    same[count] = arrIn2->pdata[j];
+                    count++;
+                    arrOut->size ++;
+                }
+            }
+        }
+    }  
+    
+    arrOut->pdata = malloc(sizeof(int)*arrOut->size); 
+
+    for (int i = 0; i < arrOut->size; i++)
+    {
+        *(arrOut->pdata+i) = same[i];
+    }
 }
 
 void freeMemory(struct array *arr1, struct array *arr2, struct array *arr3)
